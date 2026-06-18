@@ -4,81 +4,76 @@ import Seo from "@/components/Seo";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SectionWrapper from "@/components/SectionWrapper";
+import { Button } from "@/components/ui/button";
+import type { Lang } from "@/lib/appRegistry";
 
 interface LegalPageLayoutProps {
   title: string;
   description: string;
   path: string;
-  lang: "en" | "sw";
+  slug: string;
+  lang: Lang;
+  onLangChange: (lang: Lang) => void;
   page: "privacy" | "terms";
+  hasSw: boolean;
   children: ReactNode;
 }
 
 const labels = {
-  en: {
-    privacy: "Privacy Policy",
-    terms: "Terms & Conditions",
-    switchLabel: "Swahili",
-    switchLangPath: "sw",
-  },
-  sw: {
-    privacy: "Sera ya Faragha",
-    terms: "Sheria na Masharti",
-    switchLabel: "English",
-    switchLangPath: "en",
-  },
+  en: { privacy: "Privacy Policy", terms: "Terms & Conditions", switchLabel: "Swahili" },
+  sw: { privacy: "Sera ya Faragha", terms: "Sheria na Masharti", switchLabel: "English" },
 };
 
 export default function LegalPageLayout({
   title,
   description,
   path,
+  slug,
   lang,
+  onLangChange,
   page,
+  hasSw,
   children,
 }: LegalPageLayoutProps) {
   const l = labels[lang];
 
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Seo title={title} description={description} path={path} />
       <Navbar />
 
-      <main>
+      <main className="flex-1">
         <SectionWrapper>
           <div className="max-w-3xl mx-auto">
-            <div className="flex flex-wrap items-center justify-between gap-4 mb-8 border-b border-[#E5E7EB] pb-4">
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-8 border-b border-border pb-4">
               <div className="flex gap-2">
-                <Link
-                  href={`/apps/biashara-mkononi/${lang}/privacy`}
-                  className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
-                    page === "privacy"
-                      ? "bg-[#7B1C1C] text-white"
-                      : "text-[#6B7280] hover:text-[#0D0D0D]"
-                  }`}
+                <Button
+                  asChild
+                  variant={page === "privacy" ? "default" : "ghost"}
+                  className="h-auto py-1.5 px-3 text-sm"
                 >
-                  {l.privacy}
-                </Link>
-                <Link
-                  href={`/apps/biashara-mkononi/${lang}/terms`}
-                  className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
-                    page === "terms"
-                      ? "bg-[#7B1C1C] text-white"
-                      : "text-[#6B7280] hover:text-[#0D0D0D]"
-                  }`}
+                  <Link href={`/apps/${slug}/privacy`}>{l.privacy}</Link>
+                </Button>
+                <Button
+                  asChild
+                  variant={page === "terms" ? "default" : "ghost"}
+                  className="h-auto py-1.5 px-3 text-sm"
                 >
-                  {l.terms}
-                </Link>
+                  <Link href={`/apps/${slug}/terms`}>{l.terms}</Link>
+                </Button>
               </div>
-              <Link
-                href={`/apps/biashara-mkononi/${l.switchLangPath}/${page}`}
-                className="text-sm text-[#6B7280] hover:text-[#0D0D0D] border border-[#E5E7EB] rounded-lg px-3 py-1.5 transition-colors"
-              >
-                {l.switchLabel}
-              </Link>
+              {hasSw && (
+                <Button
+                  variant="outline"
+                  className="h-auto py-1.5 px-3 text-sm"
+                  onClick={() => onLangChange(lang === "en" ? "sw" : "en")}
+                >
+                  {l.switchLabel}
+                </Button>
+              )}
             </div>
 
-            <article className="prose max-w-none prose-headings:text-[#0D0D0D] prose-p:text-[#6B7280] prose-li:text-[#6B7280] prose-strong:text-[#0D0D0D] prose-a:text-[#7B1C1C]">
+            <article className="prose max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-li:text-muted-foreground prose-strong:text-foreground prose-a:text-foreground">
               {children}
             </article>
           </div>
@@ -86,6 +81,6 @@ export default function LegalPageLayout({
       </main>
 
       <Footer />
-    </>
+    </div>
   );
 }

@@ -52,14 +52,14 @@ export default function LegalLayout({
         {description && <meta name="description" content={description} />}
       </Head>
 
-      <div className="min-h-screen bg-gray-50">
+      <div className="flex flex-col min-h-screen bg-background">
         {/* Header */}
-        <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
+        <header className="bg-background border-b border-border sticky top-0 z-10">
           <div className="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
             {lang && (
               <Link
                 href={`/${l.langPath}/${currentPage}`}
-                className="text-sm text-gray-500 hover:text-gray-700 border border-gray-300 rounded px-2 py-1"
+                className="text-sm text-muted-foreground hover:text-foreground border border-border rounded px-2 py-1 transition-colors"
               >
                 {l.langSwitch}
               </Link>
@@ -68,14 +68,14 @@ export default function LegalLayout({
         </header>
 
         {/* Nav tabs */}
-        <div className="bg-white border-b border-gray-200">
+        <div className="bg-background border-b border-border">
           <div className="max-w-3xl mx-auto px-4 flex gap-1">
             <Link
               href={resolvedPrivacyHref}
               className={`px-4 py-3 text-sm font-medium border-b-2 -mb-px transition-colors ${
                 currentPage === "privacy"
-                  ? "border-blue-600 text-blue-600"
-                  : "border-transparent text-gray-500 hover:text-gray-700"
+                  ? "border-primary text-primary"
+                  : "border-transparent text-muted-foreground hover:text-foreground"
               }`}
             >
               {l.privacy}
@@ -84,8 +84,8 @@ export default function LegalLayout({
               href={resolvedTermsHref}
               className={`px-4 py-3 text-sm font-medium border-b-2 -mb-px transition-colors ${
                 currentPage === "terms"
-                  ? "border-blue-600 text-blue-600"
-                  : "border-transparent text-gray-500 hover:text-gray-700"
+                  ? "border-primary text-primary"
+                  : "border-transparent text-muted-foreground hover:text-foreground"
               }`}
             >
               {l.terms}
@@ -94,14 +94,14 @@ export default function LegalLayout({
         </div>
 
         {/* Content */}
-        <main className="max-w-3xl mx-auto px-4 py-8">
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 sm:p-10 prose prose-gray max-w-none">
+        <main className="flex-1 max-w-3xl mx-auto px-4 py-8 w-full">
+          <div className="bg-card rounded-lg shadow-sm border border-border p-6 sm:p-10 prose prose-gray max-w-none dark:prose-invert">
             {children}
           </div>
         </main>
 
         {/* Footer */}
-        <footer className="max-w-3xl mx-auto px-4 py-6 text-center text-xs text-gray-400">
+        <footer className="max-w-3xl mx-auto px-4 py-6 text-center text-xs text-muted-foreground">
           © {new Date().getFullYear()} Biashara Mkononi
         </footer>
       </div>

@@ -1,10 +1,16 @@
+import Image from "next/image";
+import Link from "next/link";
 import { ReactNode } from "react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 interface AppCardProps {
   name: string;
   tagline: string;
   description: string;
   icon?: ReactNode;
+  iconSrc?: string;
+  href?: string;
   playStoreUrl?: string;
   badge?: string;
 }
@@ -14,38 +20,69 @@ export default function AppCard({
   tagline,
   description,
   icon,
+  iconSrc,
+  href,
   playStoreUrl,
   badge,
 }: AppCardProps) {
-  return (
-    <div className="bg-[#F5F5F5] border border-[#E5E7EB] rounded-xl p-6 hover:bg-white hover:border-[#7B1C1C] transition-colors flex flex-col">
-      <div className="flex items-start justify-between mb-4">
-        {icon && (
-          <div className="w-12 h-12 rounded-lg bg-[#7B1C1C]/10 flex items-center justify-center">
-            {icon}
-          </div>
-        )}
+  const cardContent = (
+    <>
+      {/* Icon + name header */}
+      <div className="flex items-center gap-4 mb-5">
+        <div className="w-14 h-14 flex-none rounded-2xl bg-foreground/5 border border-border/40 flex items-center justify-center overflow-hidden">
+          {iconSrc ? (
+            <Image
+              src={iconSrc}
+              alt={`${name} icon`}
+              width={56}
+              height={56}
+              className="object-contain w-full h-full"
+            />
+          ) : icon ? (
+            <div className="flex items-center justify-center w-8 h-8">{icon}</div>
+          ) : (
+            <span className="text-2xl font-bold text-foreground/30 select-none">
+              {name[0]}
+            </span>
+          )}
+        </div>
+        <div className="flex-1 min-w-0">
+          <h3 className="text-lg font-semibold text-foreground leading-tight">{name}</h3>
+          <p className="text-sm text-muted-foreground mt-0.5 leading-snug">{tagline}</p>
+        </div>
         {badge && (
-          <span className="text-xs font-medium text-[#6B7280] border border-[#E5E7EB] rounded-full px-3 py-1">
+          <Badge variant="outline" className="flex-none rounded-full h-auto px-3 py-1 text-muted-foreground">
             {badge}
-          </span>
+          </Badge>
         )}
       </div>
 
-      <h3 className="text-xl font-semibold text-[#0D0D0D]">{name}</h3>
-      <p className="text-sm text-[#7B1C1C] font-medium mt-1">{tagline}</p>
-      <p className="text-base text-[#6B7280] mt-3 flex-1">{description}</p>
+      <p className="text-base text-muted-foreground flex-1">{description}</p>
 
-      {playStoreUrl && (
-        <a
-          href={playStoreUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-6 inline-flex items-center justify-center bg-[#7B1C1C] hover:bg-[#6B1A1A] text-white px-6 py-3 rounded-lg font-medium transition-colors"
-        >
-          Get on Play Store
-        </a>
+      {playStoreUrl && !href && (
+        <Button asChild className="mt-6 w-full h-auto py-3 px-6">
+          <a href={playStoreUrl} target="_blank" rel="noopener noreferrer">
+            Get on Play Store
+          </a>
+        </Button>
       )}
+    </>
+  );
+
+  if (href) {
+    return (
+      <Link
+        href={href}
+        className="bg-muted border border-border rounded-xl p-6 hover:bg-card hover:border-foreground transition-colors flex flex-col cursor-pointer"
+      >
+        {cardContent}
+      </Link>
+    );
+  }
+
+  return (
+    <div className="bg-muted border border-border rounded-xl p-6 hover:bg-card hover:border-foreground transition-colors flex flex-col">
+      {cardContent}
     </div>
   );
 }

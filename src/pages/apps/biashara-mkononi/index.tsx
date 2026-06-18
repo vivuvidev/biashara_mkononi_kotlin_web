@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
 import {
   WifiOff,
   Printer,
@@ -16,6 +18,15 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SectionWrapper from "@/components/SectionWrapper";
 import FeatureCard from "@/components/FeatureCard";
+
+const SCREENSHOTS = [
+  { src: "/biashara-mkononi/frame1.jpg", alt: "BiasharaMkononi POS screenshot 1" },
+  { src: "/biashara-mkononi/frame2.jpg", alt: "BiasharaMkononi POS screenshot 2" },
+  { src: "/biashara-mkononi/frame3.png", alt: "BiasharaMkononi POS screenshot 3" },
+  { src: "/biashara-mkononi/frame4.png", alt: "BiasharaMkononi POS screenshot 4" },
+  { src: "/biashara-mkononi/frame5.png", alt: "BiasharaMkononi POS screenshot 5" },
+  { src: "/biashara-mkononi/frame6.png", alt: "BiasharaMkononi POS screenshot 6" },
+];
 
 const PLAY_STORE_URL =
   "https://play.google.com/store/apps/details?id=com.vivuvidev.biasharaMkononiPOS";
@@ -75,7 +86,7 @@ const FEATURES = [
 
 export default function BiasharaMkononi() {
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Seo
         title="BiasharaMkononi POS — FlavixLabs"
         description="BiasharaMkononi POS is an offline-first point of sale app for small businesses in Tanzania and East Africa. Manage sales, products, receipts, and multiple shops — even without internet."
@@ -83,33 +94,51 @@ export default function BiasharaMkononi() {
       />
       <Navbar />
 
-      <main>
+      <main className="flex-1">
         {/* Hero */}
         <SectionWrapper className="text-center">
-          <h1 className="text-3xl md:text-5xl font-bold text-[#0D0D0D]">BiasharaMkononi POS</h1>
-          <p className="text-base text-[#7B1C1C] font-medium mt-3">
+          <h1 className="text-3xl md:text-5xl font-bold text-foreground">BiasharaMkononi POS</h1>
+          <p className="text-base text-foreground font-medium mt-3">
             The smart POS for East African businesses
           </p>
-          <p className="text-base text-[#6B7280] max-w-2xl mx-auto mt-6">
+          <p className="text-base text-muted-foreground max-w-2xl mx-auto mt-6">
             An offline-first point of sale app built for small businesses in
             Tanzania and East Africa. Manage sales, products, receipts, and
             multiple shops — even without internet.
           </p>
           <div className="mt-8">
-            <a
-              href={PLAY_STORE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-[#7B1C1C] hover:bg-[#6B1A1A] text-white px-6 py-3 rounded-lg font-medium transition-colors inline-block"
-            >
-              Download on Google Play
-            </a>
+            <Button asChild className="h-auto py-3 px-6">
+              <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer">
+                Download on Google Play
+              </a>
+            </Button>
+          </div>
+        </SectionWrapper>
+
+        {/* Screenshots */}
+        <SectionWrapper>
+          <h2 className="text-3xl font-semibold text-foreground text-center mb-8">Screenshots</h2>
+          <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
+            {SCREENSHOTS.map((shot) => (
+              <div
+                key={shot.src}
+                className="flex-none snap-center w-48 md:w-56 rounded-2xl overflow-hidden border border-border shadow-sm"
+              >
+                <Image
+                  src={shot.src}
+                  alt={shot.alt}
+                  width={224}
+                  height={486}
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+            ))}
           </div>
         </SectionWrapper>
 
         {/* Features grid */}
         <SectionWrapper>
-          <h2 className="text-3xl font-semibold text-[#0D0D0D] text-center mb-12">Features</h2>
+          <h2 className="text-3xl font-semibold text-foreground text-center mb-12">Features</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {FEATURES.map((feature) => (
               <FeatureCard
@@ -124,8 +153,8 @@ export default function BiasharaMkononi() {
 
         {/* About the app */}
         <SectionWrapper>
-          <h2 className="text-3xl font-semibold text-[#0D0D0D] text-center mb-6">About the app</h2>
-          <div className="max-w-2xl mx-auto text-base text-[#6B7280] space-y-4">
+          <h2 className="text-3xl font-semibold text-foreground text-center mb-6">About the app</h2>
+          <div className="max-w-2xl mx-auto text-base text-muted-foreground space-y-4">
             <p>
               BiasharaMkononi POS is a point-of-sale app that helps small
               business owners run their day-to-day operations from a phone or
@@ -148,23 +177,17 @@ export default function BiasharaMkononi() {
 
         {/* Legal links */}
         <SectionWrapper className="text-center">
-          <h2 className="text-3xl font-semibold text-[#0D0D0D] mb-6">Legal</h2>
+          <h2 className="text-3xl font-semibold text-foreground mb-6">Legal</h2>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm">
             <Link
-              href="/apps/biashara-mkononi/en/privacy"
-              className="text-[#7B1C1C] hover:text-[#6B1A1A] transition-colors"
+              href="/apps/biashara-mkononi/privacy"
+              className="text-foreground hover:text-foreground/70 transition-colors"
             >
-              Privacy Policy (English)
+              Privacy Policy
             </Link>
             <Link
-              href="/apps/biashara-mkononi/sw/privacy"
-              className="text-[#7B1C1C] hover:text-[#6B1A1A] transition-colors"
-            >
-              Sera ya Faragha (Swahili)
-            </Link>
-            <Link
-              href="/apps/biashara-mkononi/en/terms"
-              className="text-[#7B1C1C] hover:text-[#6B1A1A] transition-colors"
+              href="/apps/biashara-mkononi/terms"
+              className="text-foreground hover:text-foreground/70 transition-colors"
             >
               Terms of Service
             </Link>
@@ -173,6 +196,6 @@ export default function BiasharaMkononi() {
       </main>
 
       <Footer />
-    </>
+    </div>
   );
 }
