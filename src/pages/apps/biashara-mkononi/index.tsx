@@ -180,13 +180,13 @@ export default function BiasharaMkononi() {
           <h2 className="text-3xl font-semibold text-foreground mb-6">Legal</h2>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm">
             <Link
-              href="/apps/biashara-mkononi/privacy"
+              href="/apps/biashara-mkononi/en/privacy"
               className="text-foreground hover:text-foreground/70 transition-colors"
             >
               Privacy Policy
             </Link>
             <Link
-              href="/apps/biashara-mkononi/terms"
+              href="/apps/biashara-mkononi/en/terms"
               className="text-foreground hover:text-foreground/70 transition-colors"
             >
               Terms of Service

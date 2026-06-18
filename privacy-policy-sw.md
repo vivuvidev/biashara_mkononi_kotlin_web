@@ -1,8 +1,8 @@
 # Sera ya Faragha — BiasharaMkononi POS
 
-**Imesasishwa: Juni 2025**
+**Imesasishwa: Juni 2026**
 **Msanidi: FlavixLabs**
-**Mawasiliano: [your-email@flavixlabs.com]**
+**Mawasiliano: [support@flavixlabs.com]**
 
 ---
 
@@ -121,7 +121,7 @@ Una haki ya:
 - **Kuhamisha** data yako ya biashara (rekodi za mauzo, bidhaa)
 - **Kusahihisha** taarifa zisizo sahihi
 
-Ili kutumia haki hizi zozote, wasiliana nasi kwa **[your-email@flavixlabs.com]**.
+Ili kutumia haki hizi zozote, wasiliana nasi kwa **[support@flavixlabs.com]**.
 
 Ufutaji wa akaunti unaweza kuanzishwa moja kwa moja kutoka ndani ya Programu.
 
@@ -144,5 +144,5 @@ Tunaweza kusasisha Sera hii ya Faragha mara kwa mara. Tutakapofanya hivyo, tutas
 Ikiwa una maswali kuhusu Sera hii ya Faragha, wasiliana:
 
 **FlavixLabs**
-Barua pepe: [your-email@flavixlabs.com]
-Tovuti: https://biasharamkononi.flavixlabs.com
+Barua pepe: [support@flavixlabs.com]
+

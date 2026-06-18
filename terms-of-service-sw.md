@@ -1,8 +1,8 @@
 # Masharti ya Huduma — BiasharaMkononi POS
 
-**Imesasishwa: Juni 2025**
+**Imesasishwa: Juni 2026**
 **Msanidi: FlavixLabs**
-**Mawasiliano: [your-email@flavixlabs.com]**
+**Mawasiliano: [support@flavixlabs.com]**
 
 ---
 
@@ -156,5 +156,5 @@ Tunaweza kusasisha Masharti haya mara kwa mara. Tutakuarifu kuhusu mabadiliko ma
 Ikiwa una maswali kuhusu Masharti haya, wasiliana:
 
 **FlavixLabs**
-Barua pepe: [your-email@flavixlabs.com]
-Tovuti: https://biasharamkononi.flavixlabs.com
+Barua pepe: [support@flavixlabs.com]
+
