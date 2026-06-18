@@ -77,7 +77,7 @@ Unawajibika kwa usahihi wa data unayoingiza. BiasharaMkononi POS ni chombo — i
 Programu imeundwa kukusaidia kurekodi na kusimamia miamala ya biashara yako. Hata hivyo:
 
 - Programu **si mfumo wa uhasibu ulioidhinishwa** na haipaswi kutumika kama rekodi yako pekee ya fedha
-- **Uzingatiaji wa kodi** (ikiwemo wajibu wa TRA Tanzania) unabaki kuwa wajibu wako
+- **Uzingatiaji wa kodi**  unabaki kuwa wajibu wako
 - Tunapendekeza kuweka nakala hifadhi za kujitegemea za rekodi zako za fedha
 - Nambari za risiti zilizozalishwa na Programu ni kwa ajili ya kumbukumbu yako ya ndani tu
 

@@ -3,6 +3,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SectionWrapper from "@/components/SectionWrapper";
 import AppCard from "@/components/AppCard";
+import AnimatedGrid from "@/components/AnimatedGrid";
+import Reveal from "@/components/Reveal";
 import { Card, CardContent } from "@/components/ui/card";
 
 export default function Apps() {
@@ -17,9 +19,11 @@ export default function Apps() {
 
       <main className="flex-1">
         <SectionWrapper>
-          <h1 className="text-3xl md:text-5xl font-bold text-foreground text-center mb-12">Our Apps</h1>
+          <Reveal className="text-center mb-12">
+            <h1 className="text-3xl md:text-5xl font-bold text-foreground">Our Apps</h1>
+          </Reveal>
 
-          <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+          <AnimatedGrid className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
             <AppCard
               name="BiasharaMkononi POS"
               tagline="The smart POS for East African businesses"
@@ -29,7 +33,7 @@ export default function Apps() {
               playStoreUrl="https://play.google.com/store/apps/details?id=com.vivuvidev.biasharaMkononiPOS"
             />
 
-            <Card className="opacity-60 py-0 ring-0 border border-border">
+            <Card className="h-full opacity-60 py-0 ring-0 border border-border">
               <CardContent className="p-6 flex flex-col items-center justify-center text-center h-full min-h-[180px]">
                 <h2 className="text-xl font-semibold text-foreground">Coming Soon</h2>
                 <p className="text-base text-muted-foreground mt-3">
@@ -37,7 +41,7 @@ export default function Apps() {
                 </p>
               </CardContent>
             </Card>
-          </div>
+          </AnimatedGrid>
         </SectionWrapper>
       </main>
 

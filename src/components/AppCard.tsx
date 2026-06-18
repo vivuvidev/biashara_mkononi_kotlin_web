@@ -1,8 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ReactNode } from "react";
+import { motion, useReducedMotion } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+
+const MotionLink = motion.create(Link);
 
 interface AppCardProps {
   name: string;
@@ -25,6 +28,9 @@ export default function AppCard({
   playStoreUrl,
   badge,
 }: AppCardProps) {
+  const prefersReducedMotion = useReducedMotion();
+  const hoverAnimation = prefersReducedMotion ? undefined : { y: -4, scale: 1.025 };
+
   const cardContent = (
     <>
       {/* Icon + name header */}
@@ -71,18 +77,24 @@ export default function AppCard({
 
   if (href) {
     return (
-      <Link
+      <MotionLink
         href={href}
-        className="bg-muted border border-border rounded-xl p-6 hover:bg-card hover:border-foreground transition-colors flex flex-col cursor-pointer"
+        className="h-full bg-muted border border-border rounded-xl p-6 hover:bg-card hover:border-foreground transition-colors flex flex-col cursor-pointer"
+        whileHover={hoverAnimation}
+        transition={{ duration: 0.2, ease: "easeOut" as const }}
       >
         {cardContent}
-      </Link>
+      </MotionLink>
     );
   }
 
   return (
-    <div className="bg-muted border border-border rounded-xl p-6 hover:bg-card hover:border-foreground transition-colors flex flex-col">
+    <motion.div
+      className="h-full bg-muted border border-border rounded-xl p-6 hover:bg-card hover:border-foreground transition-colors flex flex-col"
+      whileHover={hoverAnimation}
+      transition={{ duration: 0.2, ease: "easeOut" as const }}
+    >
       {cardContent}
-    </div>
+    </motion.div>
   );
 }

@@ -7,6 +7,8 @@ import Footer from "@/components/Footer";
 import SectionWrapper from "@/components/SectionWrapper";
 import AppCard from "@/components/AppCard";
 import FeatureCard from "@/components/FeatureCard";
+import AnimatedGrid from "@/components/AnimatedGrid";
+import Reveal from "@/components/Reveal";
 import { Button } from "@/components/ui/button";
 import { GithubIcon, YoutubeIcon, FacebookIcon, InstagramIcon } from "@/components/icons/SocialIcons";
 
@@ -121,8 +123,10 @@ export default function Home() {
 
         {/* Apps */}
         <SectionWrapper id="apps">
-          <h2 className="text-3xl font-semibold text-foreground text-center mb-12">Our Apps</h2>
-          <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+          <Reveal className="text-center mb-12">
+            <h2 className="text-3xl font-semibold text-foreground">Our Apps</h2>
+          </Reveal>
+          <AnimatedGrid className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
             <AppCard
               name="BiasharaMkononi POS"
               tagline="The smart POS for East African businesses"
@@ -131,19 +135,21 @@ export default function Home() {
               href="/apps/biashara-mkononi"
               playStoreUrl="https://play.google.com/store/apps/details?id=com.vivuvidev.biasharaMkononiPOS"
             />
-            <div className="bg-muted border border-border rounded-xl p-6 flex flex-col items-center justify-center text-center opacity-60">
+            <div className="h-full bg-muted border border-border rounded-xl p-6 flex flex-col items-center justify-center text-center opacity-60">
               <h3 className="text-xl font-semibold text-foreground">More apps coming soon</h3>
               <p className="text-base text-muted-foreground mt-3">
                 We&apos;re working on new tools for businesses and individuals.
               </p>
             </div>
-          </div>
+          </AnimatedGrid>
         </SectionWrapper>
 
         {/* Features */}
         <SectionWrapper>
-          <h2 className="text-3xl font-semibold text-foreground text-center mb-12">Why FlavixLabs</h2>
-          <div className="grid sm:grid-cols-3 gap-6">
+          <Reveal className="text-center mb-12">
+            <h2 className="text-3xl font-semibold text-foreground">Why FlavixLabs</h2>
+          </Reveal>
+          <AnimatedGrid className="grid sm:grid-cols-3 gap-6">
             <FeatureCard
               icon={Shield}
               title="Reliable"
@@ -159,45 +165,49 @@ export default function Home() {
               title="Modern technology"
               description="Built with the latest tools for fast, smooth experiences."
             />
-          </div>
+          </AnimatedGrid>
         </SectionWrapper>
 
         {/* About */}
         <SectionWrapper id="about">
-          <h2 className="text-3xl font-semibold text-foreground text-center mb-6">About FlavixLabs</h2>
-          <p className="text-base text-muted-foreground max-w-2xl mx-auto text-center">
-            FlavixLabs is an independent software company building practical
-            mobile apps for everyday use. We focus on simplicity, reliability,
-            and making technology accessible to businesses across East Africa.
-          </p>
+          <Reveal className="text-center">
+            <h2 className="text-3xl font-semibold text-foreground mb-6">About FlavixLabs</h2>
+            <p className="text-base text-muted-foreground max-w-2xl mx-auto">
+              FlavixLabs is an independent software company building practical
+              mobile apps for everyday use. We focus on simplicity, reliability,
+              and making technology accessible to businesses across East Africa.
+            </p>
+          </Reveal>
         </SectionWrapper>
 
         {/* Contact */}
         <SectionWrapper id="contact" className="text-center">
-          <h2 className="text-3xl font-semibold text-foreground mb-6">Get in touch</h2>
-          <Button asChild variant="link" className="h-auto text-foreground hover:text-foreground/70 gap-2">
-            <a href="mailto:support@flavixlabs.com">
-              <Mail className="w-5 h-5" />
-              support@flavixlabs.com
-            </a>
-          </Button>
-          <div className="flex items-center justify-center gap-4 mt-6">
-            {SOCIAL_LINKS.map((social) => {
-              const Icon = social.icon;
-              return (
-                <Button key={social.href} asChild variant="ghost" size="icon">
-                  <a
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={social.label}
-                  >
-                    <Icon className="w-5 h-5" />
-                  </a>
-                </Button>
-              );
-            })}
-          </div>
+          <Reveal>
+            <h2 className="text-3xl font-semibold text-foreground mb-6">Get in touch</h2>
+            <Button asChild variant="link" className="h-auto text-foreground hover:text-foreground/70 gap-2">
+              <a href="mailto:support@flavixlabs.com">
+                <Mail className="w-5 h-5" />
+                support@flavixlabs.com
+              </a>
+            </Button>
+            <div className="flex items-center justify-center gap-4 mt-6">
+              {SOCIAL_LINKS.map((social) => {
+                const Icon = social.icon;
+                return (
+                  <Button key={social.href} asChild variant="ghost" size="icon">
+                    <a
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={social.label}
+                    >
+                      <Icon className="w-5 h-5" />
+                    </a>
+                  </Button>
+                );
+              })}
+            </div>
+          </Reveal>
         </SectionWrapper>
       </main>
 

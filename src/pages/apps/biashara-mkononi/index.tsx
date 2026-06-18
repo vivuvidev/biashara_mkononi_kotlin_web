@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
   WifiOff,
@@ -18,6 +17,9 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SectionWrapper from "@/components/SectionWrapper";
 import FeatureCard from "@/components/FeatureCard";
+import AnimatedGrid from "@/components/AnimatedGrid";
+import Reveal from "@/components/Reveal";
+import ScreenshotCarousel from "@/components/ScreenshotCarousel";
 
 const SCREENSHOTS = [
   { src: "/biashara-mkononi/frame1.jpg", alt: "BiasharaMkononi POS screenshot 1" },
@@ -97,49 +99,42 @@ export default function BiasharaMkononi() {
       <main className="flex-1">
         {/* Hero */}
         <SectionWrapper className="text-center">
-          <h1 className="text-3xl md:text-5xl font-bold text-foreground">BiasharaMkononi POS</h1>
-          <p className="text-base text-foreground font-medium mt-3">
-            The smart POS for East African businesses
-          </p>
-          <p className="text-base text-muted-foreground max-w-2xl mx-auto mt-6">
-            An offline-first point of sale app built for small businesses in
-            Tanzania and East Africa. Manage sales, products, receipts, and
-            multiple shops — even without internet.
-          </p>
-          <div className="mt-8">
-            <Button asChild className="h-auto py-3 px-6">
-              <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer">
-                Download on Google Play
-              </a>
-            </Button>
-          </div>
+          <Reveal>
+            <h1 className="text-3xl md:text-5xl font-bold text-foreground">BiasharaMkononi POS</h1>
+            <p className="text-base text-foreground font-medium mt-3">
+              The smart POS for East African businesses
+            </p>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <p className="text-base text-muted-foreground max-w-2xl mx-auto mt-6">
+              An offline-first point of sale app built for small businesses in
+              Tanzania and East Africa. Manage sales, products, receipts, and
+              multiple shops — even without internet.
+            </p>
+            <div className="mt-8">
+              <Button asChild className="h-auto py-3 px-6">
+                <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer">
+                  Download on Google Play
+                </a>
+              </Button>
+            </div>
+          </Reveal>
         </SectionWrapper>
 
         {/* Screenshots */}
         <SectionWrapper>
-          <h2 className="text-3xl font-semibold text-foreground text-center mb-8">Screenshots</h2>
-          <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
-            {SCREENSHOTS.map((shot) => (
-              <div
-                key={shot.src}
-                className="flex-none snap-center w-48 md:w-56 rounded-2xl overflow-hidden border border-border shadow-sm"
-              >
-                <Image
-                  src={shot.src}
-                  alt={shot.alt}
-                  width={224}
-                  height={486}
-                  className="w-full h-auto object-cover"
-                />
-              </div>
-            ))}
-          </div>
+          <Reveal className="text-center mb-8">
+            <h2 className="text-3xl font-semibold text-foreground">Screenshots</h2>
+          </Reveal>
+          <ScreenshotCarousel screenshots={SCREENSHOTS} />
         </SectionWrapper>
 
         {/* Features grid */}
         <SectionWrapper>
-          <h2 className="text-3xl font-semibold text-foreground text-center mb-12">Features</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <Reveal className="text-center mb-12">
+            <h2 className="text-3xl font-semibold text-foreground">Features</h2>
+          </Reveal>
+          <AnimatedGrid className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {FEATURES.map((feature) => (
               <FeatureCard
                 key={feature.title}
@@ -148,50 +143,56 @@ export default function BiasharaMkononi() {
                 description={feature.description}
               />
             ))}
-          </div>
+          </AnimatedGrid>
         </SectionWrapper>
 
         {/* About the app */}
         <SectionWrapper>
-          <h2 className="text-3xl font-semibold text-foreground text-center mb-6">About the app</h2>
-          <div className="max-w-2xl mx-auto text-base text-muted-foreground space-y-4">
-            <p>
-              BiasharaMkononi POS is a point-of-sale app that helps small
-              business owners run their day-to-day operations from a phone or
-              tablet — managing products, recording sales, printing receipts,
-              and tracking inventory, even when there&apos;s no internet
-              connection.
-            </p>
-            <p>
-              It&apos;s built for small businesses, shops, kiosks, and vendors
-              across Tanzania and East Africa who need a fast, reliable POS
-              that works in real-world conditions.
-            </p>
-            <p>
-              The app is available in both English and Swahili, so you and
-              your staff can use it in the language you&apos;re most
-              comfortable with.
-            </p>
-          </div>
+          <Reveal className="text-center mb-6">
+            <h2 className="text-3xl font-semibold text-foreground">About the app</h2>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <div className="max-w-2xl mx-auto text-base text-muted-foreground space-y-4">
+              <p>
+                BiasharaMkononi POS is a point-of-sale app that helps small
+                business owners run their day-to-day operations from a phone or
+                tablet — managing products, recording sales, printing receipts,
+                and tracking inventory, even when there&apos;s no internet
+                connection.
+              </p>
+              <p>
+                It&apos;s built for small businesses, shops, kiosks, and vendors
+                across Tanzania and East Africa who need a fast, reliable POS
+                that works in real-world conditions.
+              </p>
+              <p>
+                The app is available in both English and Swahili, so you and
+                your staff can use it in the language you&apos;re most
+                comfortable with.
+              </p>
+            </div>
+          </Reveal>
         </SectionWrapper>
 
         {/* Legal links */}
         <SectionWrapper className="text-center">
-          <h2 className="text-3xl font-semibold text-foreground mb-6">Legal</h2>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm">
-            <Link
-              href="/apps/biashara-mkononi/en/privacy"
-              className="text-foreground hover:text-foreground/70 transition-colors"
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              href="/apps/biashara-mkononi/en/terms"
-              className="text-foreground hover:text-foreground/70 transition-colors"
-            >
-              Terms of Service
-            </Link>
-          </div>
+          <Reveal>
+            <h2 className="text-3xl font-semibold text-foreground mb-6">Legal</h2>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm">
+              <Link
+                href="/apps/biashara-mkononi/en/privacy"
+                className="text-foreground hover:text-foreground/70 transition-colors"
+              >
+                Privacy Policy
+              </Link>
+              <Link
+                href="/apps/biashara-mkononi/en/terms"
+                className="text-foreground hover:text-foreground/70 transition-colors"
+              >
+                Terms of Service
+              </Link>
+            </div>
+          </Reveal>
         </SectionWrapper>
       </main>
 
